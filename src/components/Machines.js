@@ -5,12 +5,11 @@ export default function Machines({ list, deleteItem }) {
   return (
     <>
       <div className='container'>
-        <h3 className='text-center'>Here are Machine Data</h3>
+        <br></br>
         <div class="row row-cols-1 row-cols-md-4 g-4">
           {len !== 0 ?
-
             <>{list.map((element) => {
-              return <Items machineData={element} deleteItem={deleteItem} />
+              return <Items machineData={element} />
             })}</>
             : "No Machine to display!"
           }

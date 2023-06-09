@@ -1,29 +1,26 @@
 import React, { useState } from 'react'
 export default function Add(props) {
-    const [Name, setName] = useState("")
-    const [Id, setId] = useState("")
-    const [temp, settemp] = useState("")
-    const [X, setX] = useState("")
-    const [Y, setY] = useState("")
+    const [Name, setName] = useState(false)
+    const [Id, setId] = useState(false)
+    const [temp, settemp] = useState(false)
+    const [X, setX] = useState(false)
+    const [Y, setY] = useState(false)
     const submit = (e) => {
         e.preventDefault();
-        if (!Name || !Id || !temp || !X || !Y) {
-            alert("Please provide all the information!");
-        }
-        else {
+         {
             props.addTodo(Name, Id, temp, X, Y);
-            setName("");
-            setId("");
-            setX("");
-            setY("");
-            settemp("");
+            setName(false);
+            setId(false);
+            setX(false);
+            setY(false);
+            settemp(false);
         }
     }
     return (
         <>
             <div className='text-center'>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Add a new Machine data
+                    Add a new Machine
                 </button></div>
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -35,24 +32,36 @@ export default function Add(props) {
                         <div class="modal-body">
                             <div className='container'>
                                 <form onSubmit={submit} >
-                                    <div className="mb-3">
-                                        <label for="Name" className="form-label">Machine Name</label>
-                                        <input type="text" value={Name} onChange={(e) => setName(e.target.value)} className="form-control" id="Name" placeholder="" />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label for="Id" className="form-label">Machine ID</label>
-                                        <input type="text" value={Id} onChange={(e) => setId(e.target.value)} className="form-control" id="Id" placeholder="" />
-                                    </div><div className="mb-3">
-                                        <label for="temp" className="form-label">Machine temperature</label>
-                                        <input type="text" value={temp} onChange={(e) => settemp(e.target.value)} className="form-control" id="temp" placeholder="" />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label for="X" className="form-label">Machine X coordinates</label>
-                                        <input type="text" value={X} onChange={(e) => setX(e.target.value)} className="form-control" id="X" placeholder="" />
-                                    </div><div className="mb-3">
-                                        <label for="Y" className="form-label">Machine Y coordinates</label>
-                                        <input type="text" value={Y} onChange={(e) => setY(e.target.value)} className="form-control" id="Y" placeholder="" />
-                                    </div>
+                                <div>                           
+                                 <input checked={Name} onChange={e => setName(e.target.checked)} class="form-check-input" type="checkbox" value="" id="Name"/>
+                                <label class="form-check-label" for="Name">
+                                    Machine Name
+                                </label>
+                                </div>
+                                <div>
+                                <input checked={Id} onChange={e => setId(e.target.checked)} class="form-check-input" type="checkbox" value="" id="id"/>
+                                <label class="form-check-label" for="id">
+                                    Machine ID
+                                </label>
+                                </div>
+                                <div>
+                                <input checked={temp} onChange={e => settemp(e.target.checked)} class="form-check-input" type="checkbox" value="" id="temp"/>
+                                <label class="form-check-label" for="temp">
+                                    Temperature
+                                </label>
+                                </div>
+                                <div>
+                                <input checked={X} onChange={e => setX(e.target.checked)} class="form-check-input" type="checkbox" value="" id="x"/>
+                                <label class="form-check-label" for="x">
+                                    X Coordinate
+                                </label>
+                                </div>
+                                <div>
+                                <input checked={Y} onChange={e => setY(e.target.checked)} class="form-check-input" type="checkbox" value="" id="y"/>
+                                <label class="form-check-label" for="y">
+                                  Y Coordinate
+                                </label>
+                                </div>
                                     <button type="submit" class="btn btn-success">Add</button>
                                 </form>
                             </div>
